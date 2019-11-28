@@ -20,7 +20,7 @@ include('function.php');
 			?>
 			<form action="connexion.php" method="post">
 			<label>Login</label>
-			<input name="login" type="text" required>
+			<input name="login" type="text" placeholder="votre login" required>
 			<label>Password</label>
 			<input name="mdp" type="password" required>
 			<input type="submit" class="mybutton" value="log in">

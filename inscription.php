@@ -11,7 +11,7 @@ include('function.php');
 <?php include('header.php'); ?>
 <main>
 	<form method="post" action="Inscription">
-		<label>Login : </label><input type="text" name="login" required>
+		<label>Login : </label><input placeholder="Votre login" type="text" name="login" required>
 		<label>Mot de passe : </label><input type="password" name="password" required>	
 		<label>Confirmation Mot de passe : </label><input type="password" name="repassword" required>	
 		<input type="submit" name="insc">		
