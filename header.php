@@ -23,7 +23,7 @@
 							";
 					}
 				?>
-				
+				<a href="salon.php">Salon</a>
 				<a href="discussion.php">Discussion</a>
 			</nav>
 </header>
