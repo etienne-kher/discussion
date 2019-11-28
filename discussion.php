@@ -46,6 +46,7 @@ include('function.php');
                 $logid = $resultatlog["id"];
                 $requete = "INSERT INTO messages (message,id_utilisateur,date) VALUE (\"$message\",$logid,NOW())";
                 $query = mysqli_query($connexion, $requete);
+                header("Location:discussion.php");
             }
         ?>
 </main>
