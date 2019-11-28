@@ -37,10 +37,11 @@ include('function.php');
 					header("location:index.php");
 				}
 				else
-				{
+				{	if(!isset($_SESSION['login'])){
 					?>
 						<p>une erreur dans le login ou le mot de passe c'est produite</p>
 					<?php
+						}
 				}
 			
 		}
