@@ -11,13 +11,16 @@
 				<?php 
 					if(!isset($_SESSION['login']))
 					{
-						echo "<a href=\"inscription.php\">Inscription</a>
-							  <a href=\"connexion.php\">Connexion</a>
-							  <a href=\"profil.php\">Profil</a>
-								";
+						echo "
+								<a href=\"inscription.php\">Inscription</a>
+								<a href=\"connexion.php\">Connexion</a>
+							";
 					}else
 					{
-						echo"<a href=\"index.php?deconnexion=deco\">Deconnexion</a>";
+						echo"
+								<a href=\"index.php?deconnexion=deco\">Deconnexion</a>
+								<a href=\"profil.php\">Profil</a>
+							";
 					}
 				?>
 				
