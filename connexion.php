@@ -28,11 +28,8 @@ include('function.php');
 		}
 		if(isset($_POST["login"]) && isset($_POST["mdp"]))
 		{
-			$connexion = mysqli_connect("localhost", "root", "", "discussion");
 			$requete = "SELECT * FROM utilisateurs WHERE login = '".$_POST['login']."';";
-			var_dump($requete);
-			$query = mysqli_query($connexion, $requete);
-			$resultat = mysqli_fetch_array($query);
+			$resultat = sql($requete);
 			if(!empty($resultat))
 			{
 				if(chiffre($_POST["mdp"])==$resultat["password"])
