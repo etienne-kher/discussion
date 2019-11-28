@@ -1,9 +1,26 @@
+<?php
+	if(isset($_GET['deconnexion']))
+	{
+		session_destroy();
+		header("location:index.php");
+	}
+?>
 <header>
 			<nav>
 				<a href="index.php">Accueil</a>
-				<a href="inscription.php">Inscription</a>
-				<a href="connexion.php">Connexion</a>
+				<?php 
+					if(!isset($_SESSION['login']))
+					{
+						echo "<a href=\"inscription.php\">Inscription</a>
+							  <a href=\"connexion.php\">Connexion</a>
+							  <a href=\"profil.php\">Profil</a>
+								";
+					}else
+					{
+						echo"<a href=\"index.php?deconnexion=deco\">Deconnexion</a>";
+					}
+				?>
+				
 				<a href="discussion.php">Discussion</a>
-				<a href="profil.php">Profil</a>
 			</nav>
 </header>
