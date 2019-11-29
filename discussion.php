@@ -17,7 +17,7 @@ include('function.php');
             $resultat = mysqli_fetch_all($query);
             foreach($resultat as list($a, $b, $c))
             {
-                echo "<b>Posté le ".$c." par ".$a."<i>".$b."</i></b><br/>";
+                echo "<b>".$a."</b> à ".$c.": <i>".$b."</i></b><br/>";
             }
         ?>
 		<?php
