@@ -84,7 +84,6 @@ if (isset($_SESSION['login']))
 
 <?php
 
-
 } 
 else 
 {
