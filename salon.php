@@ -1,0 +1,47 @@
+<?php 
+session_start(); 
+include('function.php');
+if(isset($_POST['sal']))
+{
+	$req="INSERT INTO `salon` (`id`, `nom`, `date`, `texte`, `auteur`) VALUES (NULL, '".$_POST['nom']."', CURRENT_DATE,'".$_POST['question']."', '".$_SESSION['login']."');";
+	sql($req);	
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Salon</title>
+</head>
+<body>
+<?php include('header.php'); ?>
+<main>
+	<?php 
+		if (isset($_SESSION['login'])) {
+	?>
+	<form action="salon.php" method="post">
+		<label>Nom du sujet</label><input type="text" name="nom">
+		<label>Votre question</label><textarea type="text" name="question"></textarea>
+		<input type="submit" name="sal">
+	</form>
+<?php 
+}else{
+?>
+<p>vous dever étre conecter pour ouvrire une discussion</p>
+<?php
+}
+$req="SELECT * FROM salon";
+$salon=sql($req);
+foreach($salon as $s)
+            {?>
+            <div>
+            	<h1><?php echo $s[1]; ?></h1>
+            	<p><?php echo $s[2]; ?></p>
+               <a href="discussion.php?id=<?php echo $s[0]; ?>">consulter</a>
+			</div>
+           <?php }
+
+?>
+</main>
+<?php include('footer.php'); ?>
+</body>
+</html>
