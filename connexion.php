@@ -31,7 +31,7 @@ include('function.php');
 			$requete = "SELECT * FROM utilisateurs WHERE login = '".$_POST['login']."';";
 			$resultat = sql($requete);
 			
-				if(chiffre($_POST["mdp"])==$resultat[0][2]&&!empty($resultat))
+				if(!empty($resultat)&&chiffre($_POST["mdp"])==$resultat[0][2])
 				{
 					$_SESSION["login"] = $_POST["login"];
 					header("location:index.php");
