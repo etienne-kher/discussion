@@ -70,7 +70,7 @@ if (isset($_SESSION['login']))
                 echo "Attention ! Mot de passe différents";
               } 
            elseif(isset($_POST['passwordx'])){
-                $pwdx = password_hash($_POST['passwordx'], PASSWORD_BCRYPT, array('cost' => 12));
+                $pwdx = chiffre($_POST['passwordx']);
                 $updatepwd = "UPDATE utilisateurs SET password = '$pwdx' WHERE id = '" . $resultat['id'] . "'";
                 $query2 = mysqli_query($connexion, $updatepwd);
                 header('Location:profil.php');
