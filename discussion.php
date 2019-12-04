@@ -20,7 +20,7 @@ include('function.php');
     
             $sal=$_GET['id'];
             $connexion = mysqli_connect("localhost", "root", "", "discussion");
-            $requete = "SELECT utilisateurs.login, messages.message, date_format(messages.date,\"%T le %e %c %Y\")  FROM utilisateurs, messages WHERE messages.id_utilisateur = utilisateurs.id AND messages.id_salon=$sal ORDER BY date ";
+            $requete = "SELECT utilisateurs.login, messages.message, date_format(messages.date,\"%T le %e/%c/%Y\")  FROM utilisateurs, messages WHERE messages.id_utilisateur = utilisateurs.id AND messages.id_salon=$sal ORDER BY date ";
             $query = mysqli_query($connexion, $requete);
             $resultat = mysqli_fetch_all($query);
             foreach($resultat as list($a, $b, $c))
