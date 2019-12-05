@@ -23,7 +23,7 @@ if (isset($_SESSION['login']))
 
     <form class="formuser" action="profil.php" method="post">
         <label> Login </label>
-        <input type="text" name="login" value=<?php echo $resultat['login']; ?> />
+        <input type="text" name="login" required  value=<?php echo $resultat['login']; ?> />
         <input id="prodId" name="ID" type="hidden" value=<?php echo $resultat['id']; ?> />
         <input class="mybutton" type="submit" name="modifier" value="Modifier" />
     </form>
@@ -32,17 +32,21 @@ if (isset($_SESSION['login']))
         if (isset($_POST['modifier']) ) 
         {
              $login = $_POST["login"];
-             $prenom = $_POST["prenom"];
-             $nom = $_POST["nom"];
              $requete2 = "SELECT login FROM utilisateurs WHERE login = '$login'";
              $query2 = mysqli_query($connexion, $requete2);
              $resultat2 = mysqli_fetch_all($query2);
+            
              if(!empty($resultat2))
-                {
-                   echo "Login deja utilisé, requete refusé.<br>";
+                {	
+               		
+                   header("Location:profil.php?err=true");
+                    if ($login==$_SESSION['login']) 
+               		{	
+               			header("Location:profil.php");	
+               		}
                 }
             if(empty($resultat2))
-                {
+                {	
                     $updatelog = "UPDATE utilisateurs SET login ='" . $_POST['login'] . "' WHERE id = '" . $resultat['id'] . "'";
                     $querylog = mysqli_query($connexion, $updatelog);
                     $_SESSION['login']=$_POST['login'];
@@ -55,9 +59,9 @@ if (isset($_SESSION['login']))
 <section class="rightsidebar"> 
      <form class="formuser" action="profil.php" method="post">
         <label> New Password </label>
-        <input type="password" name="passwordx" />
+        <input type="password" name="passwordx" required />
         <label> Confirm New Password </label>
-        <input type="password" name="passwordconf" />
+        <input type="password" name="passwordconf"  required />
         <input id="prodId" name="ID" type="hidden" value=<?php echo $resultat['id']; ?> />
         <input class="mybutton" type="submit" name="modifier2" value="Modifier MDP" />
     </form>
@@ -76,6 +80,10 @@ if (isset($_SESSION['login']))
                 header('Location:profil.php');
               }
         }
+    if(isset($_GET['err']))
+    {
+    	echo "Login deja utilisé, requete refusé.<br>";
+    }
 ?>
 </section>
 
@@ -83,7 +91,7 @@ if (isset($_SESSION['login']))
 } 
 else 
 {
-echo "Veuillez vous connecter pour accéder à votre page !";
+	echo "Veuillez vous connecter pour accéder à votre page !";
 }
 ?>
 </main>
