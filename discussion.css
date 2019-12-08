@@ -125,6 +125,7 @@ a:hover
 label,input
 {
 	font-size: 110%;
+	font-family: 'ZCOOL QingKe HuangYou', cursive;
 }
 input[type="submit"]
 {
