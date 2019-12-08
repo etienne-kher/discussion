@@ -5,15 +5,16 @@ include('function.php');
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="discussion.css">
 	<title>Inscription</title>
 </head>
 <body>
 <?php include('header.php'); ?>
 <main>
-	<form method="post" action="Inscription">
+	<form method="post" action="Inscription" class="formuser">
 		<label>Login : </label><input placeholder="Votre login" type="text" name="login" required>
 		<label>Mot de passe : </label><input type="password" name="password" required>	
-		<label>Confirmation Mot de passe : </label><input type="password" name="repassword" required>	
+		<label>Confirmation : </label><input type="password" name="repassword" required>	
 		<input type="submit" name="insc">		
 	</form>
 </main>
@@ -29,7 +30,6 @@ include('function.php');
 		{
 				$sql="SELECT COUNT(*) FROM utilisateurs WHERE login='".$_POST['login']."';";
 				$reception = sql($sql);
-				var_dump($reception);
 				if($reception[0][0]==0)
 				{	$_POST['password']=chiffre($_POST['password']);
 					$sql="INSERT INTO `utilisateurs` (`id`,`login`,`password`) VALUES (NULL, '".$_POST['login']."','".$_POST['password']."');";
@@ -38,12 +38,12 @@ include('function.php');
 				}
 				else
 				{
-					echo"login deja pris";
+					?><p id="err" >login deja pris</p>;<?php
 				}
 		}
 		else
 		{
-			echo"erreur mdp";
+			?><p id="err">erreur mdp</p><?php
 		}
 	}
 ?>

@@ -5,6 +5,7 @@ include('function.php');
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="discussion.css">
 	<title>Accueil</title>
 </head>
 <body>

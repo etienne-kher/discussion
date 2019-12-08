@@ -5,12 +5,13 @@ include('function.php');
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="discussion.css">
 	<title>Modifier Profil</title>
 </head>
 <body>
 <?php include('header.php'); ?>
 <main>
-<section class="leftsidebar">
+
 
 <?php
 if (isset($_SESSION['login'])) 
@@ -54,13 +55,11 @@ if (isset($_SESSION['login']))
                 }
         }
     ?>
-</section>
 
-<section class="rightsidebar"> 
      <form class="formuser" action="profil.php" method="post">
-        <label> New Password </label>
+        <label>Mot de passe</label>
         <input type="password" name="passwordx" required />
-        <label> Confirm New Password </label>
+        <label>Confirmation</label>
         <input type="password" name="passwordconf"  required />
         <input id="prodId" name="ID" type="hidden" value=<?php echo $resultat['id']; ?> />
         <input class="mybutton" type="submit" name="modifier2" value="Modifier MDP" />
@@ -71,7 +70,7 @@ if (isset($_SESSION['login']))
         {
            if ($_POST["passwordx"] != $_POST["passwordconf"]) 
               {
-                echo "Attention ! Mot de passe différents";
+                ?><p id="err" >Attention ! Mot de passe différents</p><?php
               } 
            elseif(isset($_POST['passwordx'])){
                 $pwdx = chiffre($_POST['passwordx']);
@@ -82,16 +81,16 @@ if (isset($_SESSION['login']))
         }
     if(isset($_GET['err']))
     {
-    	echo "Login deja utilisé, requete refusé.<br>";
+    	?><p id="err" >Login deja utilisé, requete refusé.</p><br><?php
     }
 ?>
-</section>
+
 
 <?php
 } 
 else 
 {
-	echo "Veuillez vous connecter pour accéder à votre page !";
+	?><p id="err" >Veuillez vous connecter pour accéder à votre page !</p><?php
 }
 ?>
 </main>

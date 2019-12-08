@@ -5,6 +5,7 @@ include('function.php');
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="discussion.css">
 	<title>Discussion</title>
 </head>
 <body>
@@ -25,17 +26,17 @@ include('function.php');
             $resultat = mysqli_fetch_all($query);
             foreach($resultat as list($a, $b, $c))
             {
-                echo "<b>".$a."</b> à ".$c.": <i>".$b."</i></b><br/>";
+                echo "<div><section>Par <b>".$a."</b> à ".$c."</section> <article>".$b."</article></b><br/></div>";
             }
         ?>
 		<?php
         if (isset($_SESSION['login'])) 
             {
                ?> 
-                <form action="discussion.php?id=<?php echo $_GET['id']; ?>" method="post" class="formuser">
-                <label>Message</label>
-                <input type="text" name="message" required>
-                <input class="mybutton"  type="submit" value="Poster" name="poster">
+                <form action="discussion.php?id=<?php echo $_GET['id']; ?>" method="post" id="form-disc">
+                    <label>Message :</label>
+                    <textarea type="text" name="message" required></textarea>
+                    <input class="mybutton"  type="submit" value="Poster" name="poster">
                 </form>
                 <?php
             }
