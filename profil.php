@@ -15,7 +15,7 @@ include('function.php');
 <?php
 if (isset($_SESSION['login'])) 
 {
-    $connexion = mysqli_connect("localhost", "root", "", "discussion");
+    $connexion = mysqli_connect('Localhost', 'admindiscu', 'Lamballe43', 'gwenael-mahe_discussion');
     $requete = "SELECT * FROM utilisateurs WHERE login='" . $_SESSION['login'] . "'";
     $query = mysqli_query($connexion, $requete);
     $resultat = mysqli_fetch_assoc($query);

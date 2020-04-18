@@ -1,6 +1,6 @@
 <?php function sql($sql)
 	{
-		$bd=mysqli_connect("localhost","root","","discussion");
+		$bd=mysqli_connect('Localhost', 'admindiscu', 'Lamballe43', 'gwenael-mahe_discussion');
 		$envoit=mysqli_query($bd,$sql);
 		if($sql[0]=="S"||$sql[0]=="s")
 		{	
